@@ -1,0 +1,114 @@
+﻿    #showMore {
+        background-color:coral;
+        border: none;
+        display:block;
+        color: white;
+        padding: 15px 32px;
+        width:500px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 0 auto;
+        position:relative;
+    }
+
+    .most_popular{
+        width: 100%;
+        background-color:#f9f9f9;
+        font-weight:bold;
+        background-size: 100% 100%;
+        border-radius: 10px;
+        clear:left;
+
+    }
+    .most_popular p{
+        text-align:center; 
+        font-weight:bold; 
+        font-size:25px;
+        padding:15px;
+    }
+    .popular_by_week{
+        background-color:#f9f9f9;
+        border-radius: 10px;
+        width:25%;
+        float:right
+    }
+
+    #MainTable{
+        width:70%;
+        table-layout:fixed;
+    }
+    
+
+    #MainTable tr td:first-child ul li:first-child{
+        text-align:center;
+    }
+  
+    #MainTable tr td:nth-child(1), th:nth-child(1){
+        width:250px; 
+        vertical-align:middle;
+    }
+
+    #MainTable li:first-child{
+        font-weight:bold;
+        color:#4db7ad;
+    }
+     #MainTable li:last-child{
+        margin-left:30px;
+        font-weight:bold
+    }
+
+     #TopBar p{
+         text-align:center;
+         padding-top:15px;
+     }
+
+    .popular_by_week p{
+        font-size:15px; 
+        font-weight:bold;
+        margin-left:5px;
+    }
+    table{
+        display:block;
+    }
+
+    table {
+		overflow-x: auto;
+		display: block;
+	}
+    /*table, table td {
+        border: none !important;
+    }*/
+
+    img {
+     max-width: 100%; 
+     height: auto; 
+     width: auto\\9; /* ie8 */
+    }
+
+    #search {
+    width:100%;
+    background-color:#f9f9f9;
+    border-radius:1%; 
+}
+    .counts{
+        float:right;
+    }
+
+    #innerSearch #searchbtn{
+        width:50px;
+        float:left;
+        margin-top:2px; 
+        margin-left:5px; 
+        background-color:white; 
+        border-radius:5%; 
+        height:30px;
+    }
+
+    #innerSearch #search{
+         float:left;
+         max-width:80%;
+         width:700px; 
+         padding-right:50px;
+    }
+
