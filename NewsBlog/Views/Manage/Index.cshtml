@@ -7,38 +7,70 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 
+<style>
+    .image-upload > input
+{
+    display: none;
+}
+    img:hover{
+        border: 1px solid #00ff90;
+    }
+
+    img #cover{
+        border-radius:50%;
+        height:200px;
+        width:200px;
+    }
+     
+</style>
 @using (Html.BeginForm("UpdateUser", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    <div id="login" style="float:left; margin-top:20px; width:100%;">
-        <h2 style="text-align:center"><span class="fontawesome-lock"></span>Особистий кабінет</h2>
-        <fieldset>
-            <div style="float:left;padding:23px;">
-                @{
-                    <img src="@Url.Action("GetUserCover", "Manage")" style="margin-left: auto;  width:150px;height:150px;margin-right: auto; border-radius:50%; display:block" />
-                }
-
-                <br /><br />
-
-                <input type="file" name="file" id="file" style="width: 100%;margin-left: auto; margin-right: auto;" />
-
-            </div>
-
-            <h4>Ім'я</h4>
-
-            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            <br />
-
-            <h4>Прізвище</h4>
-
-            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            <br />
-
-            <input type="submit" value="Зберегти" class="btn btn-default" />
-        </fieldset>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-heading">Особистий кабінет</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4 " align="center">
+                                <div class="image-upload">
+                                    <label for="file">
+                                        <img src="@Url.Action("GetUserCover", "Manage")" style="width:150px; height:150px;" id="#cover" class="img-rounded" />
+                                    </label>
+                                    <input type="file" name="file" id="file" style="width: 100%;margin-left: auto; margin-right: auto;" />
+                                </div>
+                            </div>
+                            <div class=" col-md-8 col-lg-8">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="submit" value="Зберегти" class="btn btn-default" />             
+                                            </td>
+                                        </tr>
+                                     </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+             </div>
+        </div>
     </div>
+ </div>
 }
 
 @*

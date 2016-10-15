@@ -37,6 +37,7 @@ namespace NewsBlog.Controllers
 
 
         [AllowAnonymous]
+        [OutputCache(Location=System.Web.UI.OutputCacheLocation.Any, Duration=60)]
         public FileContentResult GetUserImage(string id)
         {
             var cover = db.Users.FirstOrDefault(p => p.Id == id);
@@ -85,6 +86,7 @@ namespace NewsBlog.Controllers
         }
 
 
+        //[OutputCache(Location=System.Web.UI.OutputCacheLocation.Any, Duration=60)]
         public ActionResult Index(int? page, string category, string search)
         {
             int pageSize = 4;

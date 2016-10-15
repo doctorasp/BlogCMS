@@ -9,11 +9,20 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href='@Url.Content("~/Content/themes/base/all.css")' rel="stylesheet" type="text/css" />
+    
+    <style>
+        header{
+            height:200px;
+        }
+        header table{
+           padding-left:200px;
+        }
+    </style>
 </head>
 <body>
-    <div style="background-color:#808080; height:18px;margin-top:-30px;">
+    <div style="background-color:#4DB7AD; height:5px;margin-top:-30px;">
     </div>
-    <div class="navbar navbar-default" style="background-color:#f9f9f9;">
+    <div class="navbar navbar-default" style="background-color:transparent;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,21 +41,31 @@
                         <li>@Html.ActionLink("Admin", "Admin", "Home")</li>
                         <li>@Html.ActionLink("Додати новину", "Create", "Articles")</li>
                     }
+                    
                 </ul>
+                <div style="margin-left:auto; margin-right:auto;" id="innerSearch">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                    {
+                        <input type="text" name="search" class="form-control" placeholder="Пошук" id="search">
+                        <button id="searchbtn" type="submit" value="Пошук" style="color:#4ec0c0; " class="btn btn-link">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    }
+                </div>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-
-    <div class="container body-content">
+    <div class="container" style="max-width :100%; padding:15px;">
         @RenderBody()
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryUI")
-    @Scripts.Render("~/bundles/scrollup")
     @RenderSection("scripts", required: false)
+
+    <script data-main="Scripts/app/main" src="~/Scripts/Require.js"></script>
     <a href="#" class="scrollup">Наверх</a>
 </body>
 </html>

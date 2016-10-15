@@ -12,10 +12,24 @@
         position:relative;
     }
 
+    img {
+    -webkit-filter: brightness(100%);
+}
+
+    img:hover {
+        -webkit-filter: brightness(80%);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
     .most_popular{
-        width: 100%;
+        width: 70%;
         background-color:#f9f9f9;
         font-weight:bold;
+        margin:auto;
         background-size: 100% 100%;
         border-radius: 10px;
         clear:left;
@@ -28,22 +42,29 @@
         padding:15px;
     }
     .popular_by_week{
-        background-color:#f9f9f9;
         border-radius: 10px;
         width:25%;
         float:right
     }
 
     #MainTable{
-        width:70%;
+        width:60%;
         table-layout:fixed;
+        margin-left:5%;
     }
     
-
+    #MainTable td:first-child{
+        background-color:#ecf9fa;
+    }
+ 
     #MainTable tr td:first-child ul li:first-child{
         text-align:center;
     }
-  
+
+   #itemName{
+        padding-bottom:50px;
+    }
+
     #MainTable tr td:nth-child(1), th:nth-child(1){
         width:250px; 
         vertical-align:middle;
@@ -68,17 +89,14 @@
         font-weight:bold;
         margin-left:5px;
     }
-    table{
-        display:block;
-    }
-
+  
     table {
 		overflow-x: auto;
 		display: block;
 	}
-    /*table, table td {
+    table, table td {
         border: none !important;
-    }*/
+    }
 
     img {
      max-width: 100%; 
@@ -86,11 +104,6 @@
      width: auto\\9; /* ie8 */
     }
 
-    #search {
-    width:100%;
-    background-color:#f9f9f9;
-    border-radius:1%; 
-}
     .counts{
         float:right;
     }
@@ -98,17 +111,29 @@
     #innerSearch #searchbtn{
         width:50px;
         float:left;
-        margin-top:2px; 
+        margin-top:10px; 
         margin-left:5px; 
-        background-color:white; 
+        background-color:transparent; 
         border-radius:5%; 
         height:30px;
     }
 
     #innerSearch #search{
-         float:left;
-         max-width:80%;
-         width:700px; 
-         padding-right:50px;
+        float:left;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        width:120px;
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 10px;
+        margin-top:10px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+    #innerSearch #search:focus{
+        width:200px;
     }
 
