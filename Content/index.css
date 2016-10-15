@@ -1,0 +1,140 @@
+﻿    #showMore {
+        background-color:coral;
+        border: none;
+        display:block;
+        color: white;
+        padding: 15px 32px;
+        width:500px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 0 auto;
+        position:relative;
+    }
+
+    img {
+    -webkit-filter: brightness(100%);
+}
+
+    img:hover {
+        -webkit-filter: brightness(80%);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+    .most_popular{
+        width: 70%;
+        background-color:#f9f9f9;
+        font-weight:bold;
+        margin:auto;
+        background-size: 100% 100%;
+        border-radius: 10px;
+        clear:left;
+
+    }
+    .most_popular p{
+        text-align:center; 
+        font-weight:bold; 
+        font-size:25px;
+        padding:15px;
+    }
+    .popular_by_week{
+        border-radius: 10px;
+        width:25%;
+        float:right
+    }
+
+    #MainTable{
+        width:60%;
+        table-layout:fixed;
+        margin-left:5%;
+    }
+    
+    #MainTable td:first-child{
+        background-color:#ecf9fa;
+    }
+ 
+    #MainTable tr td:first-child ul li:first-child{
+        text-align:center;
+    }
+
+   #itemName{
+        padding-bottom:50px;
+    }
+
+    #MainTable tr td:nth-child(1), th:nth-child(1){
+        width:250px; 
+        vertical-align:middle;
+    }
+
+    #MainTable li:first-child{
+        font-weight:bold;
+        color:#4db7ad;
+    }
+     #MainTable li:last-child{
+        margin-left:30px;
+        font-weight:bold
+    }
+
+     #TopBar p{
+         text-align:center;
+         padding-top:15px;
+     }
+
+    .popular_by_week p{
+        font-size:15px; 
+        font-weight:bold;
+        margin-left:5px;
+    }
+  
+    table {
+		overflow-x: auto;
+		display: block;
+	}
+    table, table td {
+        border: none !important;
+    }
+
+    img {
+     max-width: 100%; 
+     height: auto; 
+     width: auto\\9; /* ie8 */
+    }
+
+    .counts{
+        float:right;
+    }
+
+    #innerSearch #searchbtn{
+        width:50px;
+        float:left;
+        margin-top:10px; 
+        margin-left:5px; 
+        background-color:transparent; 
+        border-radius:5%; 
+        height:30px;
+    }
+
+    #innerSearch #search{
+        float:left;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        width:120px;
+        height:35px;
+        background-color: white;
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 10px;
+        margin-top:10px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+    #innerSearch #search:focus{
+        width:200px;
+    }
+
