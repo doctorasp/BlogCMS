@@ -1,5 +1,5 @@
 ﻿    #showMore {
-        background-color:coral;
+        background-color:#4db7ad;
         border: none;
         display:block;
         color: white;
@@ -26,10 +26,10 @@
     }
 
     .most_popular{
-        width: 70%;
-        background-color:#f9f9f9;
+        width: 60%;
+        background-color:#ffffff;
         font-weight:bold;
-        margin:auto;
+        margin-left:60px;
         background-size: 100% 100%;
         border-radius: 10px;
         clear:left;
@@ -41,20 +41,45 @@
         font-size:25px;
         padding:15px;
     }
+
+         #TopBar p{
+         text-align:center;
+         padding-top:15px;
+     }
+
+     #TopBar {
+        background-color:#ffffff;
+        position:relative;
+     }
+
+     #vk_groups{
+         margin:auto;
+         padding-top:50px;
+         position:absolute;
+     }
+
     .popular_by_week{
-        border-radius: 10px;
         width:25%;
-        float:right
+        float:right;
+        border:2px solid #ccc;
+        background-color:#ffffff;
+    }
+    .popular_by_week p{
+        font-size:15px; 
+        font-weight:bold;
+        margin-left:5px;
     }
 
     #MainTable{
         width:60%;
         table-layout:fixed;
         margin-left:5%;
+        margin-top:-20px;
+        background-color:#ffffff;
+        padding:10px;
     }
     
     #MainTable td:first-child{
-        background-color:#ecf9fa;
     }
  
     #MainTable tr td:first-child ul li:first-child{
@@ -79,22 +104,17 @@
         font-weight:bold
     }
 
-     #TopBar p{
-         text-align:center;
-         padding-top:15px;
-     }
 
-    .popular_by_week p{
-        font-size:15px; 
-        font-weight:bold;
-        margin-left:5px;
-    }
-  
+
     table {
 		overflow-x: auto;
 		display: block;
 	}
-    table, table td {
+    table, #MainTable tr:nth-child(3n)  {
+        border-bottom:2px solid #ccc;
+        
+    }
+    table, table td{
         border: none !important;
     }
 
@@ -111,6 +131,7 @@
     #innerSearch #searchbtn{
         width:50px;
         float:left;
+        color:white;
         margin-top:10px; 
         margin-left:5px; 
         background-color:transparent; 
@@ -121,12 +142,11 @@
     #innerSearch #search{
         float:left;
         box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
+        border-radius: 1px;
+        font-size: 12px;
         width:120px;
-        height:35px;
-        background-color: white;
+        height:30px;
+        background-color: transparent;
         background-position: 10px 10px;
         background-repeat: no-repeat;
         padding: 12px 20px 12px 10px;
@@ -134,6 +154,11 @@
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
     }
+
+    ::-webkit-input-placeholder {
+        color: white;
+}
+
     #innerSearch #search:focus{
         width:200px;
     }

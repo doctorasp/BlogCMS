@@ -35,7 +35,6 @@ namespace NewsBlog.Controllers
             return PartialView("_AjaxMostPopular", model);
         }
 
-
         [AllowAnonymous]
         [OutputCache(Location=System.Web.UI.OutputCacheLocation.Any, Duration=60)]
         public FileContentResult GetUserImage(string id)
@@ -79,20 +78,16 @@ namespace NewsBlog.Controllers
             }
         }
 
-
         public ActionResult Admin()
         {
             return RedirectToAction("Index","Articles");
         }
-
-
-        //[OutputCache(Location=System.Web.UI.OutputCacheLocation.Any, Duration=60)]
         public ActionResult Index(int? page, string category, string search)
         {
             int pageSize = 4;
             int pageNumber = (page ?? 1);
 
-            var now = System.DateTime.Now;
+            var now = DateTime.Now;
 
             var MondayDate = now.AddDays(-((now.DayOfWeek - System.Threading.Thread.CurrentThread.CurrentCulture.DateTimeFormat.FirstDayOfWeek + 7) % 7)).Date;
 
@@ -109,7 +104,7 @@ namespace NewsBlog.Controllers
                 ViewBag.Ajax = (from a in db.Articles orderby a.ViewCount descending select a).Take(2);
 
                 //Search
-                if (search != null)
+                if (!String.IsNullOrEmpty(search))
                 {
                     ViewBag.isSearch = true;
                     var query = from article in db.Articles
@@ -137,7 +132,7 @@ namespace NewsBlog.Controllers
                     /*None*/
                 }
                 //CategorySort
-                if (category != null)
+                if (!String.IsNullOrEmpty(category))
                 {
                     ViewBag.isSearch = true;
                     var query = from articless in db.Articles where articless.Categories.Name == category orderby articless.ID descending select articless;

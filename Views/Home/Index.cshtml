@@ -6,9 +6,9 @@
 }
 
 @{
-    ViewBag.Title = "Home";
+        ViewBag.Title = "Home";
 
-    var options = new AjaxOptions()
+        var options = new AjaxOptions()
         {
             UpdateTargetId = "tabledata",
             Url = Url.Action("AjaxMostPopular"),
@@ -18,9 +18,9 @@
 
 <style>
     .ui-dialog-titlebar {
-        background-color: #4db7ad;
+        background-color: #162135;
         background-image: none;
-        color: #000;
+        color: white;
     }
 </style>
             @if (Model.Count > 0 && ViewBag.isSearch == true)
@@ -56,31 +56,40 @@
                         {
                             <tr>
                                 <td>
-                                    <text style="float:left; font-size:12px; font-weight:700;">@Html.ActionLink((string)item.Name, "news", "Home", new { id = @item.ID }, new { @class = "more markered", @style = "color:black" })</text><br /><br />
+                                    <text style="float:left; font-size:11px; font-weight:700;">@Html.ActionLink((string)item.Name, "news", "Home", new { id = @item.ID }, new { @class = "more markered", @style = "color:black" })</text><br /><br />
                                     <br />
-                                    <center><a href='@Url.Action("news", "Home", routeValues: new { id = item.ID })'><img width="100%" src="@Url.Action("GetImageTop", "Articles", routeValues: new { id = item.ID })" class="img-rounded" /></a></center>
+                                    <center><a href='@Url.Action("news", "Home", routeValues: new { id = item.ID })'><img width="90%" src="@Url.Action("GetImageTop", "Articles", routeValues: new { id = item.ID })" class="img-rounded" /></a></center>
                                 </td>
+                                
                                 <td>
                                     <br /><br /><br /><br />
-                                    <span class="glyphicon glyphicon-eye-open"></span>
-                                </td>
-                                <td>
-                                    <br /><br /><br /><br />
-                                    @item.ViewCount
+                                    <text style="color:#4db7ad">+@item.ViewCount</text>
                                 </td>
                             </tr>
                         }
                     </table>
 
-                    <p style="color:#4db7ad">
+
+                    
+                    
+
+                    <p style="color:#162135">
                         Категорії
                     </p><br />
 
                     @foreach (var item in ViewBag.Categories)
                     {
-                        <a href='@Url.Action("Index", "Home",routeValues: new { category = item.Name })' style="color:black ; font-weight:bold; float:left; padding-left:10px;"><text style="color:#4db7ad">&#9632;</text> @item.Name </a><br />
+                        <a href='@Url.Action("Index", "Home",routeValues: new { category = item.Name })' style="color:black ; font-weight:bold; float:left; padding-left:10px;"><text style="color:#162135">&#9632;</text> @item.Name </a><br />
                     }
+
+                    <div id="vk_groups"></div>
+                   
                 </div>
+     
+                    
+                
+               
+               
 
                 <div style="width:100%; margin:0px 5% 0px 0px;">
                     <br />
@@ -109,21 +118,21 @@
                                 </td>
 
                                 <td>
-                                    <text  style="float:left; font-size:20px;">@Html.ActionLink(item.Name, "news", "Home", new { id = item.ID }, new { @style = "color:black;" })</text><br />
+                                    <text  style="float:left; font-size:18px; padding:10px;">@Html.ActionLink(item.Name, "news", "Home", new { id = item.ID }, new { @style = "color:black;font-weight:bold;" })</text><br />
                                     <center><a href='@Url.Action("news", "Home",routeValues: new { id = item.ID })'><img id="cover" width="100%" src="@Url.Action("GetCoverImage", "Articles", routeValues: new { id = item.ID })" class="img-rounded" /></a></center>
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <br />@Html.DisplayFor(modelItem => item.Description)
+                                    <br /><text style="word-break:break-all; font-size:15px;">@Html.DisplayFor(modelItem => item.Description)</text>
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
                                     <span class="glyphicon glyphicon-time" aria-hidden="true" style="float:left;color:#4db7ad"></span>
-                                    <text style="font-size:13px; color:#4db7ad; font-weight:bold">&nbsp; @item.DateCreate &nbsp;</text><span class="glyphicon glyphicon-eye-open" style="font-size:15px;"> @item.ViewCount</span>
+                                    <text style="font-size:13px; color:#4db7ad; font-weight:bold">&nbsp; @item.DateCreate &nbsp;&nbsp;&nbsp;</text><text style="color:#50de7a">+@item.ViewCount</text> 
                                     <a href='@Url.Action("news", "Home",routeValues: new { id = item.ID })'><text id="itemName" style="float:right; font-weight:bold; color:#4db7ad">Читати далі &#9658;</text></a>
                                 </td>
                             </tr>
@@ -131,48 +140,36 @@
                                         v++;
                         }
                     </table>
-                    @{
-                        if (Model.Count != 0)
-                        {
-                            <p> <text style="padding-left:230px;">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</text></p>
-                        }
+                    
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    
+                    
+                    
+                    @if (Model.Count <=10)
+                    {
+                        <div class="most_popular" style="margin-top:10px">
+                            <p><span class="glyphicon glyphicon-leaf" style="color:#4db7ad;"></span> Найкращі матеріали</p>
+                            @using (Ajax.BeginForm(options))
+                            {
+                                <table cellpadding="5">
+                                    <tbody id="tabledata">
+                                        @Html.Action("AjaxMostPopular")
+                                    </tbody>
+                                </table>
+                                <input type="submit" value="Показати ще" id="showMore" /><br />
+                            }
+                        </div>
+                        
                     }
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
-                    @if (Model.Count == 1 || Model.Count == 2)
-                    {
-                        <div class="most_popular" style="margin-top:300px">
-                            <p><span class="glyphicon glyphicon-leaf" style="color:coral;"></span> Найкращі матеріали</p>
-                            @using (Ajax.BeginForm(options))
-                            {
-                                <table cellpadding="5">
-                                    <tbody id="tabledata">
-                                        @Html.Action("AjaxMostPopular")
-                                    </tbody>
-                                </table>
-                                <input type="submit" value="Показати ще" id="showMore" /><br />
-                            }
-                        </div>
-                    }
-                    @if (Model.Count == 0 || Model.Count > 2)
-                    {
-                        <div class="most_popular">
-                            <p><span class="glyphicon glyphicon-leaf" style="color:coral;"></span> Найкращі матеріали</p>
-                            @using (Ajax.BeginForm(options))
-                            {
-                                <table cellpadding="5">
-                                    <tbody id="tabledata">
-                                        @Html.Action("AjaxMostPopular")
-                                    </tbody>
-                                </table>
-                                <input type="submit" value="Показати ще" id="showMore" /><br />
-                            }
-                        </div>
-                    }
+                    <p id="d">
+
+                    </p>
+                   
                 </div>
             </div>
 
-      
+
             @section scripts
     {
                 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
@@ -221,6 +218,9 @@
                             $(this).closest(".dialog").dialog("close");
                         });
                     });
+                </script>
+                <script type="text/javascript">
+                    VK.Widgets.Group("vk_groups", { mode: 0, width: "330", height: "400" }, 2355375);
                 </script>
             }
 
